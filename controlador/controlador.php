@@ -10,12 +10,12 @@ $p = new Produto();
 
 
 $u->populate(array(
-    "login" => "Guilherme",
+    "email" => "guilherme@email.com",
     "senha" => 123456
 ));
 
 $p->populate(array(
-    "descricao" => "Cadeira",
+    "nome" => "Cadeira",
     "valor" => 150.00
 ));
 

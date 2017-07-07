@@ -9,19 +9,19 @@ namespace Trabalho;
  */
 class Produto {
 
-    private $descricao;
+    private $nome;
     private $valor;
 
-    function getDescricao() {
-        return $this->descricao;
+    function getNome() {
+        return $this->nome;
     }
 
     function getValor() {
         return $this->valor;
     }
 
-    function setDescricao($descricao) {
-        $this->descricao = $descricao;
+    function setNome($nome) {
+        $this->nome = $nome;
     }
 
     function setValor($valor) {
@@ -35,12 +35,12 @@ class Produto {
     use Traits\Hidratacao;
 
     public function saveBd(\PDO $conn) {
-        $descricao = $this->getDescricao();
+        $nome = $this->getNome();
         $valor = $this->getValor();
         try {
-            $sql = "Insert into tbproduto (descricao, valor) values (:descricao, :valor)";
+            $sql = "Insert into tbproduto (nome, valor) values (:nome, :valor)";
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(":descricao", $descricao);
+            $stmt->bindParam(":nome", $nome);
             $stmt->bindParam(":valor", $valor);
             $stmt->execute();
         } catch (\Exception $ex) {

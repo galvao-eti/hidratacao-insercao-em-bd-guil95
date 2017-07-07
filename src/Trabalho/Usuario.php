@@ -9,19 +9,19 @@ namespace Trabalho;
  */
 class Usuario {
 
-    private $login;
+    private $email;
     private $senha;
 
-    public function getLogin() {
-        return $this->login;
+    public function getEmail() {
+        return $this->email;
     }
 
     public function getSenha() {
         return $this->senha;
     }
 
-    public function setLogin($login) {
-        $this->login = $login;
+    public function setEmail($email) {
+        $this->email = $email;
     }
 
     public function setSenha($senha) {
@@ -35,12 +35,12 @@ class Usuario {
     use Traits\Hidratacao;
 
     public function saveBd(\PDO $conn) {
-        $login = $this->getLogin();
+        $email = $this->getEmail();
         $senha = $this->getSenha();
         try {
-            $sql = "Insert into tbusuario (login, senha) values (:login, :senha)";
+            $sql = "Insert into tbusuario (email, senha) values (:email, :senha)";
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(":login", $login);
+            $stmt->bindParam(":email", $email);
             $stmt->bindParam(":senha", $senha);
             $stmt->execute();
         } catch (Exception $ex) {
